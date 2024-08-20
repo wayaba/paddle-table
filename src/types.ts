@@ -32,3 +32,15 @@ export interface MonthGroup {
   month: string;
   players: PlayerSummary[];
 }
+
+
+export interface ChartData {
+  month: string
+  [key: string]: string | number // El mes es un string, los jugadores serán números
+}
+
+export interface PieData {
+  point: string
+  quantity: number
+  fill: string
+}
