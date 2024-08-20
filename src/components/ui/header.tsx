@@ -17,6 +17,9 @@ export const Header = () => {
             <li>
               <Link href="/players">Jugadores</Link>
             </li>
+            <li>
+                <Link href="/stats">Estadísticas</Link>
+              </li>
           </ul>
         </nav>
       </div>
@@ -53,10 +56,13 @@ export const Header = () => {
       <nav className={`h-screen ${showMenu ? 'w-full bg-background' : 'hidden'}`}>
             <ul className="flex flex-col justify-center items-center gap-6 font-bold z-30 opacity-70">
               <li>
-                <Link onClick={() => setShowMenu(!showMenu)} href="/matches">Fechas</Link>
+                <Link onClick={() => setShowMenu(!showMenu)} href="/">Inicio</Link>
               </li>
               <li>
                 <Link onClick={() => setShowMenu(!showMenu)} href="/players">Jugadores</Link>
+              </li>
+              <li>
+                <Link onClick={() => setShowMenu(!showMenu)} href="/stats">Estadísticas</Link>
               </li>
             </ul>
           </nav>

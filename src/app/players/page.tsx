@@ -17,32 +17,43 @@ moment.locale('es')
 export default async function PlayersPage() {
   const players = await api.player.list()
   return (
-    <Table className="m-auto max-w-md border">
-      <TableHeader>
-        <TableRow className="text-center align-middle">
-          <TableHead className="text-center">Jugador</TableHead>
-          <TableHead className="text-center">Apodo</TableHead>
-          <TableHead className="p-2 text-center">Tel</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {players.map(
-          ({ nickname, name, lastname, phone, email, imagePath }, index) => (
-            <TableRow className="text-center align-middle" key={index}>
-              <TableCell>
-                <Avatar
-                  name={name}
-                  lastname={lastname}
-                  email={email}
-                  imagePath={imagePath}
-                ></Avatar>
-              </TableCell>
-              <TableCell className="p-1">{nickname}</TableCell>
-              <TableCell className="p-1">{phone? <Link href={`https://wa.me/${phone}`}><WhatsappIcon/></Link> :'-'}</TableCell>
-            </TableRow>
-          )
-        )}
-      </TableBody>
-    </Table>
+    <div className='flex flex-col gap-4'>
+      <h2 className="text-3xl font-bold tracking-tight">Jugadores</h2>
+      <Table className="m-auto max-w-md border">
+        <TableHeader>
+          <TableRow className="text-center align-middle">
+            <TableHead className="text-center">Jugador</TableHead>
+            <TableHead className="text-center">Apodo</TableHead>
+            <TableHead className="p-2 text-center">Tel</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {players.map(
+            ({ nickname, name, lastname, phone, email, imagePath }, index) => (
+              <TableRow className="text-center align-middle" key={index}>
+                <TableCell>
+                  <Avatar
+                    name={name}
+                    lastname={lastname}
+                    email={email}
+                    imagePath={imagePath}
+                  ></Avatar>
+                </TableCell>
+                <TableCell className="p-1">{nickname}</TableCell>
+                <TableCell className="p-1">
+                  {phone ? (
+                    <Link href={`https://wa.me/${phone}`}>
+                      <WhatsappIcon />
+                    </Link>
+                  ) : (
+                    '-'
+                  )}
+                </TableCell>
+              </TableRow>
+            )
+          )}
+        </TableBody>
+      </Table>
+    </div>
   )
 }
