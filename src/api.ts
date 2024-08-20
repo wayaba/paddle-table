@@ -34,10 +34,10 @@ const api = {
         },
     },
     tournament: {
-        list: async (): Promise<MonthGroup[]> => {
+        list: async (): Promise<Record<string, PlayerRecord[]>> => {
             const playerRecords = await api.match.list();
 
-            const groupedByMonth = playerRecords.reduce<Record<string, PlayerRecord[]>>((acc, obj) => {
+            return playerRecords.reduce<Record<string, PlayerRecord[]>>((acc, obj) => {
                 const key = getMonthYear(obj.date);
                 if (!acc[key]) {
                     acc[key] = [];
@@ -45,37 +45,6 @@ const api = {
                 acc[key].push(obj);
                 return acc;
             }, {});
-
-
-            const result: MonthGroup[] = Object.entries(groupedByMonth).map(([month, records]) => {
-                const groupedByName = records.reduce<Record<string, PlayerSummary>>((acc, obj) => {
-                    const name = obj.name;
-                    if (!acc[name]) {
-                        acc[name] = {
-                            name,
-                            game: 0,
-                            ace: 0,
-                            drop: 0,
-                            errors: 0,
-                            zapatero: 0,
-                            total: 0,
-                        };
-                    }
-                    acc[name].game += obj.game;
-                    acc[name].ace += obj.ace;
-                    acc[name].drop += obj.drop;
-                    acc[name].errors += obj.errors;
-                    acc[name].zapatero += obj.zapatero;
-                    acc[name].total = acc[name].game + acc[name].ace + acc[name].drop - acc[name].errors + acc[name].zapatero;
-                    return acc;
-                }, {});
-
-                return {
-                    month,
-                    players: Object.values(groupedByName),
-                };
-            });
-            return result;
         },
     },
     player: {
