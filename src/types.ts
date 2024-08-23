@@ -18,13 +18,19 @@ export interface PlayerRecord {
   zapatero: number;
 }
 
-export interface PlayerSummary {
-  name: string;
-  game: number;
-  ace: number;
-  drop: number;
-  errors: number;
-  zapatero: number;
+type playerRecordWODate = Omit<PlayerRecord, "date">
+
+export interface PlayerSummary extends playerRecordWODate {
+  total: number;
+}
+
+type playerRecordWODateAndName = Omit<PlayerRecord, "date" | "name">
+
+export interface PlayerStatsData extends playerRecordWODateAndName {
+  total: number;
+}
+
+export interface PlayerStats extends playerRecordWODate {
   total: number;
 }
 

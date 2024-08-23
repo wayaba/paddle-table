@@ -112,7 +112,7 @@ export function PieContainer({pieData}:{pieData: PieData[]}) {
           Totales en lo que va del año <TrendingUp className="h-4 w-4" />
         </div>
         <div className="leading-none text-muted-foreground">
-          Sumarizando los distintos tipos de puntos
+          Sumarizando los tipos de puntos
         </div>
       </CardFooter>
     </Card>
