@@ -69,12 +69,7 @@ export function BarContainer({
     { point: 'zapatero', quantity: playerStats.zapatero, fill: 'var(--color-zapatero)' }
   ]
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{playerStats.name}</CardTitle>
-        <CardDescription>Total: {total}</CardDescription>
-      </CardHeader>
-      <CardContent>
+
         <ChartContainer config={chartConfig}>
           <BarChart
             accessibilityLayer
@@ -102,13 +97,6 @@ export function BarContainer({
             <Bar dataKey="quantity" layout="vertical" radius={5} />
           </BarChart>
         </ChartContainer>
-      </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Datos en lo que va del año <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">Total para 2024</div>
-      </CardFooter>
-    </Card>
+      
   )
 }

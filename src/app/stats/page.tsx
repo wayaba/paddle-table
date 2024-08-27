@@ -113,7 +113,7 @@ export default async function StatsPage() {
   const chartData = generateChartData(monthSummary)
   const pieData = generatePieData(monthSummary)
   const playerStats =generatePlayerSummary({ tournamentRecords })
-  
+  const playersInfo = await api.player.list()
 
   return (
     <div className="flex flex-col max-w-xs gap-4 m-auto sm:max-w-full ">
@@ -122,6 +122,7 @@ export default async function StatsPage() {
         chartConfig={chartConfig}
         pieData={pieData}
         playerStats={playerStats}
+        playersInfo={playersInfo}
       />
     </div>
   )
