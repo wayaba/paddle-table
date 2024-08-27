@@ -19,7 +19,7 @@ export const Avatar = ({name, lastname, email, imagePath}: {name:string,lastname
           {lastname?lastname:'Apellido'}, {name?name:'Nombre'}
         </p>
         <p className="text-xs text-muted-foreground">
-          <Link href={`mailto:${email}`}>{email?email:'mail@mail.com'}</Link>
+          <Link href={`mailto:${email}`}>{email?email.substring(0, 15) + '...':'mail@mail.com'}</Link>
         </p>
       </div>
     </div>

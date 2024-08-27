@@ -29,7 +29,13 @@ const api = {
                                 zapatero: zapateroClean ? parseInt(zapateroClean) : 0
                             };
                         })
-                        .filter(item => item !== null);
+                        .filter(item => 
+                            !(item.game === 0 && 
+                                item.ace === 0 && 
+                                item.drop === 0 &&
+                                item.errors === 0 &&
+                                item.zapatero === 0)
+                        );
                 });
         },
     },
