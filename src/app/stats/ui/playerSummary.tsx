@@ -79,7 +79,6 @@ export function PlayerSummary({
                   <div className="p-1">
                     <BarContainer
                       playerStats={item}
-                      total={item.total}
                     ></BarContainer>
                   </div>
                   <AlertDialogFooter>

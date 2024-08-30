@@ -1,16 +1,5 @@
 'use client'
-
-import { TrendingUp } from 'lucide-react'
 import { Bar, BarChart, XAxis, YAxis } from 'recharts'
-
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle
-} from '@/components/ui/card'
 import {
   ChartConfig,
   ChartContainer,
@@ -45,21 +34,10 @@ const chartConfig = {
   }
 } satisfies ChartConfig
 
-interface BarContainerProps {
-  game: number
-  ace: number
-  drop: number
-  errors: number
-  zapatero: number
-  name: string
-}
-
 export function BarContainer({
-  playerStats,
-  total
+  playerStats
 }: {
   playerStats: PlayerStats
-  total: number
 }) {
   const chartData = [
     { point: 'game', quantity: playerStats.game, fill: 'var(--color-game)' },

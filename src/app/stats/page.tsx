@@ -10,19 +10,14 @@ import {
 } from '@/types'
 import { ChartConfig } from '@/components/ui/chart'
 
-function getRandomColor(): string {
-  const hue = Math.floor(Math.random() * (260 - 140 + 1)) + 140
-  const saturation = Math.floor(Math.random() * 41) + 60
-  const lightness = Math.floor(Math.random() * 21) + 40
-  return `hsl(${hue}, ${saturation}%, ${lightness}%)`
-}
-
 function generateChartConfig(monthSummary: MonthGroup[]): ChartConfig {
+  let index = 1;
   return monthSummary[0].players.reduce((acc, player) => {
     acc[player.name.toLowerCase()] = {
       label: player.name,
-      color: getRandomColor()
+      color: `hsl(var(--chart-${index}))`
     }
+    index++;
     return acc
   }, {} as ChartConfig)
 }

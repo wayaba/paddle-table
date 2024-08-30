@@ -5,9 +5,6 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
-  Label,
-  Pie,
-  PieChart,
   XAxis
 } from 'recharts'
 
